@@ -1,0 +1,29 @@
+#+TITLE: My First Post
+#+DATE: 2026-03-21
+#+DRAFT: false
+#+TAGS: hugo org-mode
+
+* Welcome
+
+This is my first blog post written in Org mode!
+
+** What is Org Mode?
+
+Org mode is a powerful markup language for Emacs that allows you to:
+
+- Write structured documents
+- Manage TODO lists
+- Export to various formats including HTML
+
+** Code Example
+
+Here's a simple Python code block:
+
+#+BEGIN_SRC python
+def hello_world():
+    print("Hello from Org mode!")
+#+END_SRC
+
+** Conclusion
+
+I'm excited to start blogging with Hugo and Org mode!
