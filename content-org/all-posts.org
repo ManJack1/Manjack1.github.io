@@ -1,0 +1,255 @@
+#+TITLE: My first post
+#+AUTHOR: 罗耀辉
+#+HUGO_BASE_DIR: ../
+#+HUGO_LEVEL_OFFSET: 1
+#+OPTIONS: toc:nil num:nil
+#+TAGS: tag1
+#+CATEGORY: category1
+#+EXPORT_FILE_NAME: my-first-post
+#+LANGUAGE: zh-CN
+
+This is my post body.
+
+Emacs 基础设置配置。
+
+** 启动与界面设置
+
+#+BEGIN_SRC emacs-lisp :exports code
+;;; init.el --- Emacs 基本配置
+;;; Commentary:
+;; 一个简洁实用的 Emacs 配置文件(使用 straight.el)
+
+;;; Code:
+
+;; 启动界面
+(setq inhibit-startup-message t)
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
+(add-hook 'text-mode-hook #'display-line-numbers-mode)
+(add-hook 'conf-mode-hook #'display-line-numbers-mode)
+(column-number-mode t)
+(global-hl-line-mode t)
+(show-paren-mode t)
+(electric-pair-mode t)
+(delete-selection-mode 1)
+
+;; 界面
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+
+;; 编辑
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq c-basic-offset 4)
+
+;; 备份
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
+
+;; 滚动
+(setq scroll-step 1 scroll-conservatively 10000)
+(global-auto-revert-mode t)
+
+;; 历史
+(save-place-mode t)
+(recentf-mode t)
+(setq recentf-max-saved-items 50)
+(global-visual-line-mode 1)
+
+;; 声音
+(setq ring-bell-function 'ignore visible-bell t)
+
+;; 编码
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+#+END_SRC
+
+** 包管理
+
+#+BEGIN_SRC emacs-lisp :exports code
+;; Straight.el 配置
+(setq straight-built-in-pseudo-packages nil)
+(setq straight-check-for-modifications '(check-on-save find-when-checking))
+
+;; use-package
+(straight-use-package 'project)
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
+#+END_SRC
+
+** 字体与主题
+
+#+BEGIN_SRC emacs-lisp :exports code
+;; 字体
+(set-face-attribute 'default nil :font "Iosevka Nerd Font" :height 160)
+(set-fontset-font t 'han "Noto Serif CJK SC")
+
+;; 主题
+(use-package doom-themes
+  :config
+  (load-theme 'doom-one t))
+#+END_SRC
+
+** 补全系统
+
+#+BEGIN_SRC emacs-lisp :exports code
+;; Vertico
+(use-package vertico
+  :init (vertico-mode))
+
+;; Orderless
+(use-package orderless
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
+
+;; Marginalia
+(use-package marginalia
+  :init (marginalia-mode))
+#+END_SRC
+
+** Consult
+
+#+BEGIN_SRC emacs-lisp :exports code
+(use-package consult
+  :bind (
+         ("C-c C-c SPC" . consult-find)
+         ("C-c ," . consult-buffer)
+         ("C-c /" . consult-line)
+         ("C-c :" . consult-complex-command)
+         ("C-c f f" . consult-find)
+         ("C-c f r" . consult-recent-file)
+         ("C-c f b" . consult-buffer)
+         ("C-c f c" . find-file)
+         ("C-c f g" . consult-git-grep)
+         ("C-c f n" . consult-notes)
+         ("C-c s g" . consult-ripgrep)
+         ("C-c s G" . consult-grep)
+         ("C-c s w" . consult-ripgrep)
+         ("C-c s b" . consult-line)
+         ("C-c s B" . consult-line-multi)
+         ("C-c s d" . consult-flymake)
+         ("C-c s h" . consult-history)
+         ("C-c s m" . consult-mark)
+         ("C-c s j" . consult-outline)
+         ("C-c s k" . describe-bindings)
+         ("C-c s s" . consult-imenu)
+         ("C-c s S" . consult-imenu-multi)
+         ("C-c b b" . consult-buffer)
+         ("C-c b d" . kill-buffer)
+         ("C-c g g" . consult-git-grep)
+         ("C-c x q" . consult-compile-error)
+         ("C-c s e" . consult-flymake)
+         ("C-x b" . consult-buffer)
+         ("M-g g" . consult-goto-line)
+         ("M-g i" . consult-imenu)
+         ("M-g I" . consult-imenu-multi)
+         ("M-y" . consult-yank-pop))
+  :hook (completion-list-mode . consult-preview-at-point-mode)
+  :init
+  (setq xref-show-xrefs-function #'consult-xref
+        xref-show-definitions-function #'consult-xref))
+#+END_SRC
+
+** 导航工具
+
+#+BEGIN_SRC emacs-lisp :exports code
+(use-package centaur-tabs
+  :straight t
+  :demand t
+  :config
+  (centaur-tabs-mode t)
+  (setq centaur-tabs-style "bar"
+        centaur-tabs-height 32
+        centaur-tabs-set-icons t
+        centaur-tabs-set-bar 'over
+        centaur-tabs-set-modified-marker t
+        centaur-tabs-modified-marker "●"
+        centaur-tabs-close-button "✕"
+        centaur-tabs-gray-out-icons 'buffer)
+  :bind
+  ("C-c t h" . centaur-tabs-forward-tab)
+  ("C-c t l" . centaur-tabs-backward-tab)))
+#+END_SRC
+
+** 图标与笔记系统
+
+#+BEGIN_SRC emacs-lisp :exports code
+(use-package nerd-icons)
+(use-package nerd-icons-dired
+  :hook (dired-mode . nerd-icons-dired-mode))
+(use-package nerd-icons-completion
+  :config (nerd-icons-completion-mode))
+
+;; Org + Hugo
+(use-package ox-hugo
+  :after ox
+  :config
+  (setq org-hugo-base-dir "~/blog/")
+  (setq org-hugo-default-section-directory "posts")
+  (setq org-hugo-auto-set-lastmod t)
+  (setq org-hugo-default-static-subdirectory-for-externals "ox-hugo"))
+#+END_SRC
+
+** 中文输入
+
+#+BEGIN_SRC emacs-lisp :exports code
+(use-package pyim
+  :config
+  (setq pyim-default-scheme 'quanpin))
+
+(defun my/orderless-regexp (orig-func component)
+  (let ((result (funcall orig-func component)))
+    (if (string-match-p "^[a-z]+$" component)
+        (pyim-cregexp-build component)
+      result)))
+
+(advice-add 'orderless-regexp :around #'my/orderless-regexp)
+#+END_SRC
+
+** Org Mode 配置
+
+#+BEGIN_SRC emacs-lisp :exports code
+(use-package org
+  :config
+  (setq org-hide-emphasis-markers t
+        org-hide-block-startup t
+        org-startup-indented t
+        org-src-fontify-natively t
+        org-src-tab-acts-natively t
+        org-src-preserve-indentation t
+        org-image-align 'center
+        org-startup-with-inline-images t
+        org-image-actual-width '(400)))
+#+END_SRC
+
+** 开发工具
+
+#+BEGIN_SRC emacs-lisp :exports code
+(use-package eglot
+  :hook ((c-mode c-ts-mode c++-mode c++-ts-mode
+                 python-mode java-mode java-ts-mode) . eglot-ensure)
+  :config
+  (setq eldoc-echo-area-use-multiline-p nil)
+  (setq eglot-report-progress nil))
+
+(use-package copilot
+  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
+#+END_SRC
+
+** 自定义函数
+
+#+BEGIN_SRC emacs-lisp :exports code
+(defun my-compile-and-run-c ()
+  "编译并运行当前 C 文件"
+  (interactive)
+  (save-buffer)
+  (let* ((file (buffer-file-name))
+         (exe (file-name-sans-extension file)))
+    (compile (format "gcc %s -o %s && %s" file exe exe))))
+
+(global-set-key (kbd "C-c c") 'my-compile-and-run-c)
+(global-set-key (kbd "C-c v") 'org-download-clipboard)
+#+END_SRC
