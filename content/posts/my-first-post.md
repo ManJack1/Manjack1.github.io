@@ -1,16 +1,17 @@
-#+hugo_base_dir: ../
-
-* My first post                                             :tag1:@category1:
-:PROPERTIES:
-:EXPORT_FILE_NAME: my-first-post
-:END:
-
++++
+title = "My first post"
+author = ["罗耀辉"]
+lastmod = 2026-03-21T21:26:43+08:00
+tags = ["tag1"]
+categories = ["category1"]
+draft = false
++++
 
 基础设置
 
 Emacs 基础设置配置。
 
-#+begin_src emacs-lisp :exports code
+```emacs-lisp
 ;;; init.el --- Emacs 基本配置
 ;;; Commentary:
 ;; 一个简洁实用的 Emacs 配置文件(使用 straight.el)
@@ -59,13 +60,13 @@ Emacs 基础设置配置。
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
-#+end_src
+```
 
- 包管理
+包管理
 
 包管理相关配置，使用 straight.el 作为包管理器。
 
-#+begin_src emacs-lisp
+```emacs-lisp
 ;; Straight.el 配置
 (setq straight-built-in-pseudo-packages nil)
 (setq straight-check-for-modifications '(check-on-save find-when-checking))
@@ -74,11 +75,11 @@ Emacs 基础设置配置。
 (straight-use-package 'project)
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
-#+end_src
+```
 
- 字体与主题
+字体与主题
 
-#+begin_src emacs-lisp
+```emacs-lisp
 ;; 字体
 (set-face-attribute 'default nil :font "Iosevka Nerd Font" :height 160)
 (set-fontset-font t 'han "Noto Serif CJK SC")
@@ -87,11 +88,11 @@ Emacs 基础设置配置。
 (use-package doom-themes
   :config
   (load-theme 'doom-one t))
-#+end_src
+```
 
- 补全系统
+补全系统
 
-#+begin_src emacs-lisp
+```emacs-lisp
 ;; Vertico
 (use-package vertico
   :init (vertico-mode))
@@ -105,26 +106,25 @@ Emacs 基础设置配置。
 ;; Marginalia
 (use-package marginalia
   :init (marginalia-mode))
+```
 
-#+end_src
+Consult
 
- Consult
-
-#+begin_src emacs-lisp
+```emacs-lisp
 (use-package consult
   :bind (
          ;; C-c C-c 空格 - 最常用：查找文件
          ("C-c C-c SPC" . consult-find)       ;; <leader><space> Find Files
-         
+
          ;; C-c , - 快速切换buffer
          ("C-c ," . consult-buffer)           ;; <leader>, Buffers
-         
+
          ;; C-c / - 当前文件搜索
          ("C-c /" . consult-line)             ;; <leader>/ Grep current buffer
-         
+
          ;; C-c : - 命令历史
          ("C-c :" . consult-complex-command)  ;; <leader>: Command History
-         
+
          ;; C-c f - 文件操作
          ("C-c f f" . consult-find)           ;; <leader>ff Find Files
          ("C-c f r" . consult-recent-file)    ;; <leader>fr Recent files
@@ -145,50 +145,50 @@ Emacs 基础设置配置。
          ("C-c s k" . describe-bindings)      ;; <leader>sk Keymaps
          ("C-c s s" . consult-imenu)          ;; <leader>ss Symbols
          ("C-c s S" . consult-imenu-multi)    ;; <leader>sS LSP Workspace Symbols
-         
+
          ;; C-c b - Buffer操作
          ("C-c b b" . consult-buffer)         ;; <leader>bb Switch to Other Buffer
          ("C-c b d" . kill-buffer)            ;; <leader>bd Delete Buffer
-         
+
          ;; C-c g - Git操作
          ("C-c g g" . consult-git-grep)       ;; <leader>gg (配合gitui等)
-         
+
          ;; C-c x - 诊断/Quickfix
          ("C-c x q" . consult-compile-error)  ;; <leader>xq Quickfix List
          ("C-c s e" . consult-flymake)        ;; <leader>xl diagnostics
-         
+
          ;; 替换默认命令
          ("C-x b" . consult-buffer)
          ("M-g g" . consult-goto-line)
          ("M-g i" . consult-imenu)
          ("M-g I" . consult-imenu-multi)
          ("M-y" . consult-yank-pop)
-         
+
          ;; isearch 增强
          :map isearch-mode-map
          ("M-s l" . consult-line)
-         
+
          ;; minibuffer 历史
          :map minibuffer-local-map
          ("M-r" . consult-history))
-  
+
   :hook (completion-list-mode . consult-preview-at-point-mode)
-  
+
   :init
   (setq xref-show-xrefs-function #'consult-xref
         xref-show-definitions-function #'consult-xref)
-  
+
   :config
   (setq consult-narrow-key "<")
   (setq consult-preview-key 'any)
-  
+
   (setq consult-ripgrep-args
         "rg --null --line-buffered --color=never --max-columns=1000 --path-separator=/ --smart-case --no-heading --with-filename --line-number --search-zip"))
-#+end_src
+```
 
- 导航工具
+导航工具
 
-#+begin_src emacs-lisp
+```emacs-lisp
 (use-package centaur-tabs
   :straight t
   :demand t
@@ -251,11 +251,11 @@ Emacs 基础设置配置。
 (use-package org
   :config
   (setq org-imenu-depth 4))  ;; 显示4级标题
-#+end_src
+```
 
- 图标
+图标
 
-#+begin_src emacs-lisp
+```emacs-lisp
 (use-package nerd-icons)
 
 (use-package nerd-icons-dired
@@ -266,11 +266,11 @@ Emacs 基础设置配置。
 
 (use-package nerd-icons-completion
   :config (nerd-icons-completion-mode))
-#+end_src
+```
 
 笔记系统
 
-#+begin_src emacs-lisp
+```emacs-lisp
 (use-package ox-hugo
   :straight (:host github :repo "kaushalmodi/ox-hugo" :branch "main")
   :after ox
@@ -299,10 +299,10 @@ Emacs 基础设置配置。
   :bind ((:map vertico-map ("C-x C-d" . consult-dir)))
   :config
   (setq consult-dir-default-command #'consult-dir-dired)
-  
+
   (defun consult-dir--zoxide-dirs ()
     (split-string (shell-command-to-string "zoxide query -l") "\n" t))
-  
+
   (defvar consult-dir--source-zoxide
     `(:name "zoxide"
             :narrow ?z
@@ -311,7 +311,7 @@ Emacs 基础设置配置。
             :history file-name-history
             :enabled ,(lambda () (executable-find "zoxide"))
             :items ,#'consult-dir--zoxide-dirs))
-  
+
   (add-to-list 'consult-dir-sources 'consult-dir--source-zoxide t))
 
 ;; Consult-notes
@@ -320,7 +320,7 @@ Emacs 基础设置配置。
              consult-notes-search-in-all-notes)
   :config
   (setq consult-notes-file-dir-sources '(("Notes" ?n "~/workspace/notes/")))
-  
+
   (when (locate-library "denote")
     (consult-notes-denote-mode)
     (setq consult-notes-denote-files-function
@@ -332,11 +332,11 @@ Emacs 基础设置配置。
   (setq-default pdf-view-display-size 'fit-page)
   :hook (pdf-view-mode . (lambda ()
                            (blink-cursor-mode -1))))
-#+end_src
+```
 
- 中文输入
+中文输入
 
-#+begin_src emacs-lisp
+```emacs-lisp
 (use-package pyim
   :config
   (setq pyim-default-scheme 'quanpin))
@@ -348,11 +348,11 @@ Emacs 基础设置配置。
       result)))
 
 (advice-add 'orderless-regexp :around #'my/orderless-regexp)
-#+end_src
+```
 
- Org Mode
+Org Mode
 
-#+begin_src emacs-lisp
+```emacs-lisp
 ;; Org-download
 (use-package org-download
   :after org
@@ -519,12 +519,11 @@ Emacs 基础设置配置。
   (define-key org-mode-map (kbd "C-c i c") org-ref-insert-cite-function)
   (define-key org-mode-map (kbd "C-c i r") org-ref-insert-ref-function)
   (define-key org-mode-map (kbd "C-c i l") org-ref-insert-label-function))
+```
 
-#+end_src
+开发工具
 
- 开发工具
-
-#+begin_src emacs-lisp
+```emacs-lisp
 (use-package eglot
   :hook ((c-mode c-ts-mode c++-mode c++-ts-mode
                  python-mode java-mode java-ts-mode) . eglot-ensure)
@@ -606,12 +605,11 @@ Emacs 基础设置配置。
   :bind (("C-/" . undo-tree-undo)
          ("C-?" . undo-tree-redo)
          ("C-x u" . undo-tree-visualize)))
+```
 
-#+end_src
+自定义函数
 
- 自定义函数
-
-#+begin_src emacs-lisp
+```emacs-lisp
 (defun my-compile-and-run-c ()
   "编译并运行当前 C 文件"
   (interactive)
@@ -625,4 +623,4 @@ Emacs 基础设置配置。
 
 (provide 'init)
 ;;; init.el ends here
-#+end_src
+```

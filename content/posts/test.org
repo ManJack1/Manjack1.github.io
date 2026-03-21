@@ -1,15 +1,7 @@
-#+hugo_base_dir: ../
 
-* My first post                                             :tag1:@category1:
-:PROPERTIES:
-:EXPORT_FILE_NAME: my-first-post
-:END:
+* Emacs 基础设置配置
 
-
-基础设置
-
-Emacs 基础设置配置。
-
+Niui
 #+begin_src emacs-lisp :exports code
 ;;; init.el --- Emacs 基本配置
 ;;; Commentary:
@@ -61,7 +53,7 @@ Emacs 基础设置配置。
 (set-keyboard-coding-system 'utf-8)
 #+end_src
 
- 包管理
+* 包管理
 
 包管理相关配置，使用 straight.el 作为包管理器。
 
@@ -76,7 +68,7 @@ Emacs 基础设置配置。
 (setq straight-use-package-by-default t)
 #+end_src
 
- 字体与主题
+* 字体与主题
 
 #+begin_src emacs-lisp
 ;; 字体
@@ -89,7 +81,7 @@ Emacs 基础设置配置。
   (load-theme 'doom-one t))
 #+end_src
 
- 补全系统
+* 补全系统
 
 #+begin_src emacs-lisp
 ;; Vertico
@@ -108,7 +100,7 @@ Emacs 基础设置配置。
 
 #+end_src
 
- Consult
+* Consult
 
 #+begin_src emacs-lisp
 (use-package consult
@@ -186,7 +178,7 @@ Emacs 基础设置配置。
         "rg --null --line-buffered --color=never --max-columns=1000 --path-separator=/ --smart-case --no-heading --with-filename --line-number --search-zip"))
 #+end_src
 
- 导航工具
+* 导航工具
 
 #+begin_src emacs-lisp
 (use-package centaur-tabs
@@ -253,7 +245,7 @@ Emacs 基础设置配置。
   (setq org-imenu-depth 4))  ;; 显示4级标题
 #+end_src
 
- 图标
+* 图标
 
 #+begin_src emacs-lisp
 (use-package nerd-icons)
@@ -268,25 +260,16 @@ Emacs 基础设置配置。
   :config (nerd-icons-completion-mode))
 #+end_src
 
-笔记系统
+* 笔记系统
 
 #+begin_src emacs-lisp
 (use-package ox-hugo
-  :straight (:host github :repo "kaushalmodi/ox-hugo" :branch "main")
   :after ox
   :config
   (setq org-hugo-base-dir "~/blog/")
   (setq org-hugo-default-section-directory "posts")
   (setq org-hugo-auto-set-lastmod t)
   (setq org-hugo-default-static-subdirectory-for-externals "ox-hugo"))
-
-(use-package easy-hugo
-  :straight t
-  :config
-  (setq easy-hugo-basedir "~/blog/")
-  (setq easy-hugo-url "https://manjack1.github.io")
-  (setq easy-hugo-default-ext ".org")
-  (setq easy-hugo-org-header t))
 
 ;; Denote
 (use-package denote
@@ -334,7 +317,7 @@ Emacs 基础设置配置。
                            (blink-cursor-mode -1))))
 #+end_src
 
- 中文输入
+* 中文输入
 
 #+begin_src emacs-lisp
 (use-package pyim
@@ -350,7 +333,7 @@ Emacs 基础设置配置。
 (advice-add 'orderless-regexp :around #'my/orderless-regexp)
 #+end_src
 
- Org Mode
+* Org Mode
 
 #+begin_src emacs-lisp
 ;; Org-download
@@ -522,7 +505,7 @@ Emacs 基础设置配置。
 
 #+end_src
 
- 开发工具
+* 开发工具
 
 #+begin_src emacs-lisp
 (use-package eglot
@@ -609,7 +592,7 @@ Emacs 基础设置配置。
 
 #+end_src
 
- 自定义函数
+* 自定义函数
 
 #+begin_src emacs-lisp
 (defun my-compile-and-run-c ()
