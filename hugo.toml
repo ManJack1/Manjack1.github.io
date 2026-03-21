@@ -1,14 +1,17 @@
 baseURL = 'https://manjack1.github.io/'
 languageCode = 'en-us'
-title = 'My Blog'
+title = 'ManJack'
 theme = 'archie'
-copyright = "© Your Name"
+copyright = "© ManJack"
 paginate = 3
+pygmentsstyle = "monokai"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
 
 [params]
   mode = "auto"
   useCDN = false
-  subtitle = "A minimal and clean theme for Hugo"
+  subtitle = "A minimal and clean blog"
   mathjax = false
   katex = false
 
@@ -16,11 +19,6 @@ paginate = 3
   name = "GitHub"
   icon = "github"
   url = "https://github.com/ManJack1"
-
-[[params.social]]
-  name = "Twitter"
-  icon = "twitter"
-  url = "https://twitter.com/yourusername"
 
 [menu]
   [[menu.main]]
