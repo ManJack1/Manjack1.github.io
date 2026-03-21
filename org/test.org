@@ -1,12 +1,13 @@
-#+TITLE: test
-#+DATE: <2015-07-05 21:30 +0800>
-#+HUGO_TAGS: test tag1 tag2
-#+HUGO_CATEGORIES: test
-#+HUGO_DESCRIPTION: Just test
-
-* 我的第一篇文章
+* 用 Emacs 写博客
 :PROPERTIES:
-:EXPORT_FILE_NAME: my-first-post
+:EXPORT_FILE_NAME: blogging-with-emacs
+:EXPORT_DATE: 2024-03-01
+:EXPORT_HUGO_TAGS: emacs org-mode
+:EXPORT_HUGO_DRAFT: false
 :END:
 
-这里是内容
+正文内容...
+
+** 这是文章内的小标题
+
+更多内容...
