@@ -153,6 +153,13 @@
   color: #c8a060;
 }
 
+/* Fix: overflow-x: hidden on html/body breaks position: sticky */
+@media (min-width: 1200px) {
+  html, body {
+    overflow-x: clip;
+  }
+}
+
 /* TOC Sidebar */
 @media (min-width: 1200px) {
   .page-with-toc {
