@@ -9,6 +9,6 @@ Welcome to my blog! This is where I share my thoughts and experiences.
 
 This blog is built with:
 - [Hugo](https://gohugo.io/) - Static site generator
-- [Archie Theme](https://github.com/athul/archie) - Minimal and clean theme
+- [Dario Theme](https://github.com/GrantBirki/dario) - Minimal and clean theme
 - [Org Mode](https://orgmode.org/) - For writing posts in Emacs
 - GitHub Pages - For hosting
