@@ -34,7 +34,7 @@
 
 /* Homepage */
 .home-posts h2 {
-  margin-block-end: 1.2rem;
+  margin-block-end: 1.5rem;
 }
 
 .home-posts ul {
@@ -45,45 +45,36 @@
 
 .home-post-item {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  padding-block: 0.6rem;
-  border-bottom: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid color-mix(in srgb, currentColor 10%, transparent);
 }
 
-.home-post-item a:first-child {
-  text-decoration: none;
+.home-post-title {
+  font-size: 1.05em;
   font-weight: 500;
+  text-decoration: none;
 }
 
-.home-post-item a:first-child:hover {
+.home-post-title:hover {
   text-decoration: underline;
 }
 
 .home-post-meta {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  flex-shrink: 0;
+  gap: 0.6rem;
   font-size: 0.82em;
-  opacity: 0.6;
+  opacity: 0.55;
 }
 
 .home-post-meta .tag {
   text-decoration: none;
-  opacity: 1;
 }
 
-.home-post-meta .tag:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 540px) {
-  .home-post-item {
-    flex-direction: column;
-    gap: 0.2rem;
-  }
+.home-post-meta .tag::before {
+  content: "#";
 }
 
 .post-tags {
