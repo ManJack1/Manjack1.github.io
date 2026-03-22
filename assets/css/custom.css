@@ -4,3 +4,27 @@
   --font-family-base: "Noto Serif SC", serif;
   --content-max-inline-size: clamp(600px, 75vw, 900px);
 }
+
+.post-tags {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.post-tags .tag {
+  display: inline-block;
+  padding: 0.2em 0.75em;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  font-size: 0.85em;
+  text-decoration: none;
+  opacity: 0.75;
+  transition: opacity 0.15s;
+}
+
+.post-tags .tag:hover {
+  opacity: 1;
+}
