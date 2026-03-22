@@ -105,28 +105,25 @@
 .remark, .tip, .note, .warn {
   padding: 0.85em 1.2em;
   margin-block: 1.5em;
-  border-inline-start: 4px solid;
-  border-radius: 0 4px 4px 0;
+  border-inline-start: 3px solid;
+  border-radius: 0 var(--radius, 4px) var(--radius, 4px) 0;
   font-size: 0.95em;
   line-height: 1.7;
+  background: color-mix(in srgb, var(--border-color) 60%, var(--bg-color));
 }
 
 .remark {
-  border-color: #8b8b8b;
-  background: color-mix(in srgb, #8b8b8b 8%, transparent);
+  border-color: var(--muted-text-color);
 }
 
 .note {
-  border-color: #4a9eff;
-  background: color-mix(in srgb, #4a9eff 8%, transparent);
+  border-color: rgba(137, 137, 222, 0.8);
 }
 
 .tip {
-  border-color: #3db97a;
-  background: color-mix(in srgb, #3db97a 8%, transparent);
+  border-color: color-mix(in srgb, var(--text-color) 50%, rgba(137, 137, 222, 0.6));
 }
 
 .warn {
-  border-color: #e8a020;
-  background: color-mix(in srgb, #e8a020 8%, transparent);
+  border-color: color-mix(in srgb, var(--text-color) 30%, #c8a060);
 }
