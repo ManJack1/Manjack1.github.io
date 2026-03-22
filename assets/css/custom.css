@@ -213,6 +213,12 @@
   .toc-inner nav a:hover {
     opacity: 1;
   }
+
+  .toc-inner nav a.toc-active {
+    opacity: 1;
+    font-weight: 600;
+    color: rgba(137, 137, 222, 1);
+  }
 }
 
 @media (max-width: 1199px) {

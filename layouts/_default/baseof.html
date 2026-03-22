@@ -26,6 +26,44 @@
     </main>
 
 {{ partialCached "footer.html" . .Site.Language.Lang now.Year }}
+
+{{- if .IsPage }}
+<script>
+(function () {
+  var tocLinks = document.querySelectorAll('.toc-inner nav a');
+  if (!tocLinks.length) return;
+
+  var headings = Array.from(tocLinks).map(function (a) {
+    var id = decodeURIComponent(a.getAttribute('href').slice(1));
+    return { a: a, el: document.getElementById(id) };
+  }).filter(function (h) { return h.el; });
+
+  function activate(a) {
+    tocLinks.forEach(function (l) { l.classList.remove('toc-active'); });
+    a.classList.add('toc-active');
+    // scroll the TOC link into view inside the sidebar
+    var sidebar = document.querySelector('.toc-inner');
+    if (sidebar) {
+      var top = a.offsetTop - sidebar.offsetTop;
+      sidebar.parentElement.scrollTo({ top: top - 80, behavior: 'smooth' });
+    }
+  }
+
+  function onScroll() {
+    var scrollY = window.scrollY + 100;
+    var current = headings[0];
+    for (var i = 0; i < headings.length; i++) {
+      if (headings[i].el.offsetTop <= scrollY) current = headings[i];
+      else break;
+    }
+    activate(current.a);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+{{- end }}
 </body>
 
 </html>
