@@ -1,0 +1,20 @@
+{{- define "main" }}
+<section class="home-posts">
+    <h2>最近文章</h2>
+    <ul>
+        {{- range first 10 (where .Site.RegularPages "Type" "posts") }}
+        <li class="home-post-item">
+            <a href="{{ .Permalink }}">{{ .Title | .RenderString | plainify }}</a>
+            <span class="home-post-meta">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+                {{- with .GetTerms "tags" }}
+                {{- range . }}
+                <a href="{{ .Permalink }}" class="tag">{{ .LinkTitle }}</a>
+                {{- end }}
+                {{- end }}
+            </span>
+        </li>
+        {{- end }}
+    </ul>
+</section>
+{{- end }}

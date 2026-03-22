@@ -32,6 +32,60 @@
   }
 }
 
+/* Homepage */
+.home-posts h2 {
+  margin-block-end: 1.2rem;
+}
+
+.home-posts ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.home-post-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding-block: 0.6rem;
+  border-bottom: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.home-post-item a:first-child {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.home-post-item a:first-child:hover {
+  text-decoration: underline;
+}
+
+.home-post-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  font-size: 0.82em;
+  opacity: 0.6;
+}
+
+.home-post-meta .tag {
+  text-decoration: none;
+  opacity: 1;
+}
+
+.home-post-meta .tag:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 540px) {
+  .home-post-item {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+}
+
 .post-tags {
   margin-top: 2rem;
   padding-top: 1rem;
