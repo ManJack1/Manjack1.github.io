@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="{{- .Site.Language.LanguageCode -}}" dir="{{- .Site.Language.LanguageDirection | default "ltr" -}}" class="kind-{{ .Kind }}
+{{- if eq .Site.Params.colorScheme "dark" }} dark-mode-on
+{{- else if eq .Site.Params.colorScheme "light" }} dark-mode-off
+{{- end }}">
+
+{{ partial "head.html" . }}
+
+<body>
+{{ partialCached "header.html" . .Site.Language.Lang }}
+
+    <main class="content-wrapper{{ if .IsPage }} page-with-toc{{ end }}">
+        <article class="content-container">
+
+{{ block "main" . }}{{ end }}
+
+        </article>
+        {{- if .IsPage }}
+        <aside class="toc-sidebar">
+            <div class="toc-inner">
+                <p class="toc-title">目录</p>
+                {{ .TableOfContents }}
+            </div>
+        </aside>
+        {{- end }}
+    </main>
+
+{{ partialCached "footer.html" . .Site.Language.Lang now.Year }}
+</body>
+
+</html>

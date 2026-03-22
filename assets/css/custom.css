@@ -103,7 +103,8 @@
 
 /* Callout blocks: remark, tip, note, warn */
 .remark, .tip, .note, .warn {
-  padding: 0.85em 1.2em;
+  position: relative;
+  padding: 1.8em 1.2em 0.85em;
   margin-block: 1.5em;
   border-inline-start: 3px solid;
   border-radius: 0 var(--radius, 4px) var(--radius, 4px) 0;
@@ -112,18 +113,110 @@
   background: color-mix(in srgb, var(--border-color) 60%, var(--bg-color));
 }
 
+.remark::before, .tip::before, .note::before, .warn::before {
+  position: absolute;
+  top: 0.5em;
+  left: 1.2em;
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+}
+
 .remark {
   border-color: var(--muted-text-color);
+}
+.remark::before {
+  content: "REMARK";
 }
 
 .note {
   border-color: rgba(137, 137, 222, 0.8);
 }
+.note::before {
+  content: "NOTE";
+  color: rgba(137, 137, 222, 1);
+}
 
 .tip {
   border-color: color-mix(in srgb, var(--text-color) 50%, rgba(137, 137, 222, 0.6));
 }
+.tip::before {
+  content: "TIP";
+}
 
 .warn {
   border-color: color-mix(in srgb, var(--text-color) 30%, #c8a060);
+}
+.warn::before {
+  content: "WARN";
+  color: #c8a060;
+}
+
+/* TOC Sidebar */
+@media (min-width: 1200px) {
+  .page-with-toc {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    max-inline-size: none;
+    padding-inline: max(1.5rem, calc((100vw - 1100px) / 2));
+  }
+
+  .page-with-toc .content-container {
+    flex: 1;
+    min-width: 0;
+    max-inline-size: var(--content-max-inline-size, 620px);
+  }
+
+  .toc-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
+
+  .toc-inner {
+    font-size: 0.82em;
+    line-height: 1.6;
+  }
+
+  .toc-title {
+    font-weight: 700;
+    margin-block-end: 0.5em;
+    opacity: 0.5;
+    font-size: 0.85em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .toc-inner nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .toc-inner nav ul ul {
+    padding-inline-start: 1em;
+  }
+
+  .toc-inner nav a {
+    display: block;
+    padding-block: 0.15em;
+    text-decoration: none;
+    opacity: 0.55;
+    transition: opacity 0.15s;
+  }
+
+  .toc-inner nav a:hover {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1199px) {
+  .toc-sidebar {
+    display: none;
+  }
 }
