@@ -46,6 +46,7 @@
     gap: 0.8rem;
     margin-inline-end: 0;
     font-size: 0.8em;
+    justify-content: flex-end;
   }
 
   .search-btn {
