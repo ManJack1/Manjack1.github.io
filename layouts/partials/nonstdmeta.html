@@ -1,0 +1,3 @@
+{{- $searchJS := resources.Get "js/search.js" | minify | fingerprint }}
+<script src="{{ "js/fuse.min.js" | relURL }}" defer></script>
+<script src="{{ $searchJS.RelPermalink }}" integrity="{{ $searchJS.Data.Integrity }}" defer></script>

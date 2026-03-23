@@ -233,3 +233,125 @@
     display: none;
   }
 }
+
+/* Search */
+.search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.2em;
+  margin-inline-end: 0.6rem;
+  color: inherit;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+  line-height: 1;
+}
+
+.search-btn:hover {
+  opacity: 1;
+}
+
+.search-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: color-mix(in srgb, var(--bg-color) 70%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 8vh 1rem 1rem;
+  box-sizing: border-box;
+}
+
+.search-overlay.active {
+  display: block;
+}
+
+.search-modal {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+#searchInput {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.75em 1em;
+  font-family: var(--font-family-base);
+  font-size: 1em;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+#searchInput:focus {
+  border-color: rgba(137, 137, 222, 0.8);
+}
+
+#searchInput::placeholder {
+  opacity: 0.4;
+}
+
+.search-results {
+  margin-top: 0.5rem;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: var(--bg-color);
+}
+
+.search-results:empty {
+  border: none;
+}
+
+.search-result-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75em 1em;
+  text-decoration: none;
+  color: var(--text-color);
+  border-bottom: 1px solid color-mix(in srgb, currentColor 8%, transparent);
+  transition: background 0.1s;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background: color-mix(in srgb, var(--border-color) 50%, var(--bg-color));
+}
+
+.search-result-title {
+  font-size: 0.95em;
+  font-weight: 500;
+}
+
+.search-result-tags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.search-result-tags .tag {
+  font-size: 0.78em;
+  opacity: 0.55;
+}
+
+.search-result-tags .tag::before {
+  content: "#";
+}
+
+.search-empty {
+  padding: 1em;
+  opacity: 0.5;
+  font-size: 0.9em;
+  margin: 0;
+  text-align: center;
+}

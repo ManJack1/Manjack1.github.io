@@ -27,6 +27,13 @@
 
 {{ partialCached "footer.html" . .Site.Language.Lang now.Year }}
 
+<div class="search-overlay" id="searchOverlay" aria-hidden="true">
+    <div class="search-modal">
+        <input type="search" id="searchInput" placeholder="Search posts…" autocomplete="off" spellcheck="false">
+        <div id="searchResults" class="search-results"></div>
+    </div>
+</div>
+
 {{- if .IsPage }}
 <script>
 (function () {
