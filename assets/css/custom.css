@@ -25,10 +25,31 @@
 }
 
 @media (max-width: 480px) {
+  header > div {
+    flex-wrap: wrap;
+    row-gap: 0.3rem;
+  }
+
+  header h1,
+  header h1 a {
+    inline-size: auto;
+    flex: 1 1 auto;
+  }
+
+  .header-controls {
+    gap: 0.5rem;
+  }
+
   .header-nav {
+    order: 3;
+    flex: 0 0 100%;
     gap: 0.8rem;
-    margin-inline-end: 0.8rem;
+    margin-inline-end: 0;
     font-size: 0.8em;
+  }
+
+  .search-btn {
+    margin-inline-end: 0;
   }
 }
 
