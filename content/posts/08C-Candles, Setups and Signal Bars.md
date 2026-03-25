@@ -1,7 +1,7 @@
 +++
 title = "08C-Candles, Setups and Signal Bars"
 date = 2026-03-11T10:34:00+08:00
-lastmod = 2026-03-23T12:08:18+08:00
+lastmod = 2026-03-25T12:40:21+08:00
 tags = ["stock", "price-action"]
 draft = false
 +++
@@ -88,3 +88,64 @@ draft = false
 
 
 ### Bad Context {#bad-context}
+
+糟糕的市场环境:紧密的区间至少出现来10根k线
+
+-   突破不会马上到来
+-   没有什么可以逆转或者恢复的趋势存在
+-   TTR区间可能会持续仍然震荡的惯性
+
+{{< figure src="/ox-hugo/Bad-Context_20260324-123114.png" caption="<span class=\"figure-number\">Figure 8: </span>坏的市场背景" >}}
+
+
+### Outside Bar {#outside-bar}
+
+
+#### 通常是一个陷阱 {#通常是一个陷阱}
+
+要非常小心，即使是一个外包的k线，但也有可能是一个陷阱
+
+-   一个良好的外包k线的信号，需要良好的背景
+-   如果外包k线很大，这不意味着是一个好的信号，因为你入场的价格离你止损的位置很远
+
+{{< figure src="/ox-hugo/通常是一个陷阱_20260324-200837.png" caption="<span class=\"figure-number\">Figure 9: </span>不好的外包信号" >}}
+
+{{< figure src="/ox-hugo/通常是一个陷阱_20260324-200957.png" caption="<span class=\"figure-number\">Figure 10: </span>好的外包信号" >}}
+
+<div class="remark">
+
+有了前面的外包k线构成来双底，后面一根的外包k线变成了一个更好的入场信号。
+
+</div>
+
+
+#### 外包k线 {#外包k线}
+
+io形态通常作为双k反转的一部分
+
+-   如果市场环境良好的话，那么外包k线可以是双k反转
+-   在多头行情中，io上方做多
+-   在空头行情中，io下方做空
+
+{{< figure src="/ox-hugo/外包k线_20260325-120219.png" caption="<span class=\"figure-number\">Figure 11: </span>外包转变为双k反转" >}}
+
+<div class="remark">
+
+在上涨趋势中，出现来牛旗的回调，且出现来做多反转的io形态，多头会在上方埋伏做多。
+
+</div>
+
+
+### inside bar {#inside-bar}
+
+ii形态甚至iii形态，是一种突破的形态，它在小周期中是一个收敛三角形态。
+
+{{< figure src="/ox-hugo/inside-bar_20260325-123717.png" caption="<span class=\"figure-number\">Figure 12: </span>小周期示意图" >}}
+
+{{< figure src="/ox-hugo/inside-bar_20260325-123302.png" caption="<span class=\"figure-number\">Figure 13: </span>ii突破" >}}
+
+<div class="remark">
+
+在这个图标上出现来两个 ii 形态，但是由于背景是多头趋势，所以第一个ii往下反转的几率略低。但是第二个ii，也是背景不好，空头趋势力竭回调了三次，但是ii形态后面出现来不好的跟随，所以还是以多头趋势较为强势。
+
+</div>
