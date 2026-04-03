@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 :root {
-  --font-family-base: "Noto Serif SC", serif;
+  --font-family-base: "PT Serif", "Songti SC", STSong, SimSun, serif;
   --content-max-inline-size: clamp(600px, 75vw, 900px);
   --font-size-base: 14px;
 }
