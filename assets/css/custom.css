@@ -3,7 +3,7 @@
 :root {
   --font-family-base: "PT Serif", "Songti SC", STSong, SimSun, serif;
   --content-max-inline-size: clamp(600px, 75vw, 900px);
-  --font-size-base: 14px;
+  --font-size-base: 14.5px;
 }
 
 .header-nav {
