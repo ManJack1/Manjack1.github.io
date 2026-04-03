@@ -3,6 +3,7 @@
 :root {
   --font-family-base: "Noto Serif SC", serif;
   --content-max-inline-size: clamp(600px, 75vw, 900px);
+  --font-size-base: 13px;
 }
 
 .header-nav {
